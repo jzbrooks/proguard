@@ -8,13 +8,16 @@ buildscript {
         mavenCentral() // For the ProGuard Gradle Plugin and anything else.
     }
     dependencies {
-        classpath 'com.guardsquare:proguard-gradle:7.1.0-beta5'
+        //classpath 'com.guardsquare:proguard-gradle:7.1.0-beta5'
         classpath 'com.android.tools.build:gradle:7.0.0-beta02'
     }
 }
 
+plugins {
+    id 'com.guardsquare.proguard' version '7.1.0-beta6'
+}
+
 apply plugin: 'com.android.application'
-apply plugin: 'proguard'
 
 repositories {
     google()       // For the Android plugin.

@@ -18,7 +18,7 @@ def agpVersion = '4.1.0'
 gradlePlugin {
     plugins {
         proguardPlugin {
-            id = 'proguard'
+            id = 'com.guardsquare.proguard'
             implementationClass = 'proguard.gradle.plugin.ProGuardPlugin'
         }
     }
@@ -106,8 +106,8 @@ afterEvaluate {
         - we also disable publishing of plugin markers.
      */
     tasks.withType(AbstractPublishToMaven).matching { task ->
-        task.publication.name == 'pluginMaven' ||
-            task.name =~ /^publish(.*)PluginMarkerMavenPublicationTo(GithubRepository|MavenLocal|SonatypeRepository)$/
+        task.publication.name == 'pluginMaven'// ||
+            //task.name =~ /^publish(.*)PluginMarkerMavenPublicationTo(GithubRepository|MavenLocal|SonatypeRepository)$/
     } each {task ->
         task.enabled = false
     }
