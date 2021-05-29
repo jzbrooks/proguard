@@ -1,6 +1,7 @@
 // This build file illustrates how to apply ProGuard in the Android build
 // process, with ProGuard's own plugin instead of the built-in minification
 // support of the Android Gradle plugin.
+/*
 buildscript {
     repositories {
         mavenLocal()   // For local testing
@@ -9,15 +10,17 @@ buildscript {
     }
     dependencies {
         //classpath 'com.guardsquare:proguard-gradle:7.1.0-beta5'
-        classpath 'com.android.tools.build:gradle:7.0.0-beta02'
+        //classpath 'com.android.tools.build:gradle:7.0.0-beta02'
     }
 }
+*/
 
 plugins {
+    id 'com.android.application' version '7.0.0-beta02'
     id 'com.guardsquare.proguard' version '7.1.0-beta6'
 }
 
-apply plugin: 'com.android.application'
+//apply plugin: 'proguard'
 
 repositories {
     google()       // For the Android plugin.

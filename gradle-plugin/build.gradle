@@ -98,24 +98,19 @@ tasks.withType(Test).configureEach {
 }
 
 afterEvaluate {
-    /*  This project gets two publications:
-        - "pluginMaven" is the default from `java-gradle-plugin`
-          and must not be automatically published.
-        - "<project.name>" is created by ProGuard custom logic
-          and should have its artifact ID adjusted.
-        - we also disable publishing of plugin markers.
-     */
-    tasks.withType(AbstractPublishToMaven).matching { task ->
-        task.publication.name == 'pluginMaven'// ||
-            //task.name =~ /^publish(.*)PluginMarkerMavenPublicationTo(GithubRepository|MavenLocal|SonatypeRepository)$/
-    } each {task ->
-        task.enabled = false
-    }
-
     publishing {
-        publications.getByName(project.name) {
-            pom {
-                description = 'Gradle plugin for ProGuard, the free shrinker, optimizer, obfuscator, and preverifier for Java bytecode'
+        publications {
+            pluginMaven {
+                pom {
+                    artifactId = "proguard-gradle"
+                    description = 'Gradle plugin for ProGuard, the free shrinker, optimizer, obfuscator, and preverifier for Java bytecode'
+                }
+            }
+            proguardPluginPluginMarkerMaven {
+                pom {
+                    name = "ProGuard Gradle Plugin Marker"
+                    description = 'Gradle plugin for ProGuard, the free shrinker, optimizer, obfuscator, and preverifier for Java bytecode'
+                }
             }
         }
     }

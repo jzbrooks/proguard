@@ -57,7 +57,7 @@ allprojects { Project project ->
                     publications {
                         create(project.name, MavenPublication) {
                             pom {
-                                artifactId = "proguard-$project.name"
+                                artifactId = (project.name.startsWith("proguard-") ? project.name : "proguard-$project.name")
                                 name = "$group:$artifactId"
                                 url = 'https://www.guardsquare.com/proguard'
                                 licenses {

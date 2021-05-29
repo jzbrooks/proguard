@@ -25,4 +25,4 @@ include 'gradle-plugin'
 include 'ant'
 include 'annotations'
 
-project(':gradle-plugin').name = 'gradle'
+project(':gradle-plugin').name = 'proguard-gradle'
